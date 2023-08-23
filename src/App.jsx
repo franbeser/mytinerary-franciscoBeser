@@ -8,6 +8,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from './components/Carousel'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Cities from './pages/Cities'
+import {NextUIProvider} from "@nextui-org/react";
+import Details from './pages/Details'
 
 const router = createBrowserRouter ([
   {
@@ -21,7 +23,11 @@ const router = createBrowserRouter ([
       {
         path: '/cities',
         element: <Cities />
-      }
+      },
+      {
+        path: '/details/:name',
+        element: <Details />
+      },
     ]
   }
 ])
@@ -30,6 +36,10 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
+
+    <NextUIProvider>
+    
+    
     <div className=' w-full  min-h-screen bg-[url(./public/cordobaArgentina.jpg)] bg-cover overflow-x-hidden flex flex-col align-middle'>
  
 <RouterProvider router={router}/> 
@@ -38,6 +48,9 @@ function App() {
 
     <Footer /> */}
     </div>
+
+
+    </NextUIProvider>
   )
 }
 

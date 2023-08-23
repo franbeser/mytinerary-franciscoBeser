@@ -11,9 +11,9 @@ const MainLayout = () => {
     const [bar, setBar] = useState(false)
 
     return (
-        <>
+        <div className='h-screen'>
         
-            <div className='w-100 flex h-[10vh] items-center justify-between bg-black bg-opacity-75 border-box'>
+            <div className='w-100 flex h-[10vh] items-center justify-between bg-black  border-box absolute top-0 '>
                 <a href="#">
                     <header className='flex justify-center items-center h-full p-2'>
                         <img src="./public/myTineraryLogo.png" alt="logo" className='h-10 mx-2 px-2 ' />
@@ -43,12 +43,12 @@ const MainLayout = () => {
             </div>
             
 
-            <Outlet className="absolute bottom-0" />
+            <Outlet  />
 
-            <Footer />
+            <Footer className="fixed inset-x-0 bottom-0"  />
 
 
-            </>
+          </div>
 
 
 

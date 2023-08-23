@@ -49,7 +49,7 @@ const PopularCarousel = () => {
   return (
     <>
     <div className='flex justify-center flex-col items-center '>
-<h1 className='text-lg sm:text-2xl text-white italic font-bold bg-black bg-opacity-75 py-1 px-2 rounded-2xl mb-2 '>Popular myTineraries!</h1>
+<h1 className='text-lg sm:text-2xl text-white italic font-bold bg-black bg-opacity-75 py-1 px-2 rounded-2xl mb-4 '>Popular myTineraries!</h1>
 
     <div className='w-70% flex justify-center align-middle items-center'>
     <Carousel showStatus={false}
