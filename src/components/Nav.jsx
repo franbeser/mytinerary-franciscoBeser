@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Nav = ({ className, links }) => {
   return (
@@ -7,7 +8,7 @@ const Nav = ({ className, links }) => {
 
       {
         links.map(link => (
-          <a href={link.href} key={link.key}>{link.name}</a>
+          <Link to={link.href} key={link.name} >{link.name}</Link>
         ))
       }
 

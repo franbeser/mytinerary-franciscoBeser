@@ -10,6 +10,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Cities from './pages/Cities'
 import {NextUIProvider} from "@nextui-org/react";
 import Details from './pages/Details'
+import NotFound from './components/NotFound'
+
+
 
 const router = createBrowserRouter ([
   {
@@ -22,35 +25,27 @@ const router = createBrowserRouter ([
       },
       {
         path: '/cities',
-        element: <Cities />
+        element: <Cities />,
       },
       {
-        path: '/details/:name',
-        element: <Details />
+        path: '/cities/:id',
+        element: <Details />,
       },
+      {
+        path: '*',
+        element: <NotFound />,
+      },
+
     ]
-  }
+  },
+
 ])
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-
-    <NextUIProvider>
-    
-    
-    <div className=' w-full  min-h-screen bg-[url(./public/cordobaArgentina.jpg)] bg-cover overflow-x-hidden flex flex-col align-middle'>
- 
 <RouterProvider router={router}/> 
-    {/* <MainLayout />
-    <Home />
-
-    <Footer /> */}
-    </div>
-
-
-    </NextUIProvider>
   )
 }
 
