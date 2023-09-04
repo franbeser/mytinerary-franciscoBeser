@@ -11,11 +11,11 @@ const Card2 = ({  }) => {
 
     return (
         <>
-            <div className="w-[28rem] h-[16rem] bg-black bg-opacity-75 border border-fuchsia-400 rounded-lg m-1 flex flex-col">
+            <div className=" w-[14rem] h-[20rem] sm:w-[28rem] sm:h-[16rem] bg-black bg-opacity-75 border border-fuchsia-400 rounded-lg m-1 flex flex-col">
 
                 <div className="p-2 flex flex-col items-center ">
 
-                    <h5 className="text-2xl font-bold text-white text-center">ITINERARY NAME</h5>
+                    <h5 className="text-base sm:text-2xl font-bold text-white text-center">ITINERARY NAME</h5>
                     <h5 className="mb-1 text-xl font-semibold text-white text-center">$$$</h5>
 
                     <div className='flex flex-row gap-2 items-center my-2'>

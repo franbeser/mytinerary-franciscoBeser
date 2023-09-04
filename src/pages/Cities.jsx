@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react'
 import Card from '../components/Card'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux';
-import { getCitiesAsync } from '../redux/citiesActions';
+import { useDispatch, useSelector} from 'react-redux';
+import { getCitiesSync, getCitiesAsync } from '../redux/citiesActions';
+import { server } from '../utils/axios';
+import citiesReducer from '../redux/citiesReducer.js';
 
 
 const Cities = () => {
 
-  const dispatch = useDispatch()
   const { loading, cities } = useSelector(store => store.citiesReducer)
+  const dispatch = useDispatch()
+  const [searchTerm, setSearchTerm] = useState("");
+  const filteredCities = cities.filter((city) => city.name.toLowerCase().startsWith(searchTerm.toLowerCase()));
 
   // const [cities, setCities] = useState([])
 
@@ -25,8 +29,7 @@ const Cities = () => {
   
 
 
-  const [searchTerm, setSearchTerm] = useState("");
-  const filteredCities = cities.filter((city) => city.name.toLowerCase().startsWith(searchTerm.toLowerCase()));
+
 
   return (
     <>

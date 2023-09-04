@@ -1,11 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { getCitiesSync, getCitiesAsync } from "./citiesActions.js";
+import { getCitiesSync, getCitiesAsync, getCityAsync } from "./citiesActions.js";
 
 
 const intialState = {
     cities: [],
     loading: false,
-    event: {}
+    city: {}
 }
 
 const citiesReducer = createReducer(intialState,
@@ -27,6 +27,22 @@ const citiesReducer = createReducer(intialState,
             return newState
         })
         .addCase(getCitiesAsync.rejected, (state, action) => {
+            console.log('rejected')
+            const newState = { ...state, loading: false }
+            return newState
+        })
+
+        .addCase(getCityAsync.fulfilled, (state, action) => {
+            const newState = { ...state, city: action.payload, loading: false }
+            return newState
+        })
+
+        .addCase(getCityAsync.pending, (state, action) => {
+            console.log('pending')
+            const newState = { ...state, loading: true }
+            return newState
+        })
+        .addCase(getCityAsync.rejected, (state, action) => {
             console.log('rejected')
             const newState = { ...state, loading: false }
             return newState

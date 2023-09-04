@@ -17,8 +17,18 @@ const getCitiesAsync = createAsyncThunk('getCitiesAsync', async () => {
     }
 })
 
+const getCityAsync = createAsyncThunk('getCityAsync', async ({ id }) => {
+    try {
+        const res = await server.get('/cities/' + id)
+        return res.data.response
+    } catch (error) {
+        console.log(error);
+        return []
+    }
+})
 
 
 
 
-export { getCitiesSync, getCitiesAsync}
+
+export { getCitiesSync, getCitiesAsync, getCityAsync}
