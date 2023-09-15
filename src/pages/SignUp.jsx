@@ -98,6 +98,26 @@ const SignUp = () => {
                                 <div className="mb-4">
                                     <input name='password' onChange={handleChangeData} value={data.password} aria-describedby="password-addon" aria-label="Password" placeholder="Password (8-12 char, 1 uppercase, 1 number)" className="text-sm focus:shadow-soft-primary-outline leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding py-2 px-3 font-normal text-gray-700 transition-all focus:border-fuchsia-300 focus:bg-white focus:text-gray-700 focus:outline-none focus:transition-shadow" type="password" />
                                 </div>
+
+
+
+                                
+<select id="countries" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4">
+  <option selected>Choose your country</option>
+  <option value="AR">Argentina</option>
+  <option value="BR">Brazil</option>
+  <option value="CA">Canada</option>
+  <option value="FR">France</option>
+  <option value="DE">Germany</option>
+  <option value="MX">Mexico</option>
+  <option value="ES">Spain</option>
+  <option value="US">United States</option>
+ 
+</select>
+
+
+
+
                                 <div className="min-h-6 pl-7 mb-0.5 block">
                                     <input name='terms' onChange={handleChangeData} value={data.terms} type="checkbox" className="w-4 h-4 text-fuchsia-700 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" id="terms" />
                                     <label htmlFor="terms" className="mb-2 ml-1 font-normal cursor-pointer select-none text-sm text-white"> I agree the <a className="font-bold text-white">Terms and Conditions</a>

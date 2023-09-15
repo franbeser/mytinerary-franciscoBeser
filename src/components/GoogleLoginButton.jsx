@@ -16,7 +16,7 @@ const GoogleLoginButton = ({ fn }) => {
             fn({
                 email: data.email,
                 name: data.given_name + " " + data.family_name,
-                password: "1234AaAa",
+                password: import.meta.env.VITE_GOOGLE_PW,
                 photo: data.picture,
                 terms: true,
         })

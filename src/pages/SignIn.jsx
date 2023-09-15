@@ -19,7 +19,7 @@ const SignIn = () => {
 
     const handleSubmitGoogle = async (data) => {
         const userData = { ...data }
-          if (userData.terms)  delete userData.terms
+          if (userData.terms) delete userData.terms
             const res = await server.post('/auth/in', userData)
             console.log(res);
             dispatch(login(res.data))
@@ -27,6 +27,7 @@ const SignIn = () => {
     }
 
     const handleSubmit = async () => {
+        
         const userData = { 
             email: inputEmail.current.value,
             password: inputPw.current.value,

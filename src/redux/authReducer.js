@@ -1,13 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { login, signup, authenticate }  from "../actions/authActions.js";
+import { login, signup, authenticate, signOut }  from "../actions/authActions.js";
 
-const intialState = {
+const initialState = {
     user: {},
     token: null,
     status: 'offline'
 }
 
-const authReducer = createReducer(intialState,
+const authReducer = createReducer(initialState,
     (builder) => builder
 
         .addCase(login, (state, action) => {
@@ -19,7 +19,11 @@ const authReducer = createReducer(intialState,
             return newState
         })
         .addCase(authenticate.fulfilled, (state, action) => {
-            const newState = { ...state, }
+            const newState = { ...state, ...action.payload }
+            return newState
+        })
+        .addCase(signOut, (state, action) => {
+            const newState = initialState
             return newState
         })
 )

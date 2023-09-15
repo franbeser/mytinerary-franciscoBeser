@@ -16,8 +16,10 @@ import SignIn from './pages/SignIn'
 import { useGoogleOneTapLogin } from '@react-oauth/google';
 import { server } from './utils/axios'
 import { useDispatch } from 'react-redux'
-import { login } from './actions/authActions'
+import { authenticate, login } from './actions/authActions'
 import jwtDecode from 'jwt-decode'
+import ProtectedRoute from './layouts/ProtectedRoute'
+
 
 
 
@@ -42,11 +44,11 @@ const router = createBrowserRouter ([
       },
       {
         path: '/auth/up',
-        element: <SignUp />,
+        element: <ProtectedRoute> <SignUp /> </ProtectedRoute>  ,
       },
       {
         path: '/auth/in',
-        element: <SignIn />,
+        element:  <ProtectedRoute> <SignIn /> </ProtectedRoute> ,
       },
       {
         path: '*',
@@ -62,6 +64,10 @@ function App() {
   const dispatch = useDispatch();
   const [count, setCount] = useState(0)
   
+useEffect (()=> {
+  dispatch(authenticate())
+  
+})
 
 useGoogleOneTapLogin({
   onSuccess: async credentialResponse => {
@@ -69,16 +75,17 @@ useGoogleOneTapLogin({
     const infoUser = jwtDecode(credentialResponse.credential)
     const userData = {
       email: infoUser.email,
-      password: "1234AaAa"
+      password: import.meta.env.VITE_GOOGLE_PW
     }
       const res = await server.post('/auth/in', userData)
       console.log(res);
-      dispatch(login(res.data))
+      dispatch(login(res.data))    
   },
   onError: () => {
     console.log('Login Failed');
   },
 });
+ 
 
   return (
 <RouterProvider router={router}/> 

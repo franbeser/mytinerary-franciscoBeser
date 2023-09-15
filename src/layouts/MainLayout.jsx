@@ -8,12 +8,19 @@ import { Link } from 'react-router-dom'
 import  {useSelector}  from 'react-redux/es/hooks/useSelector'
 import authReducer from '../redux/authReducer'
 import {store}  from '../redux/store.js'
+import { LS } from '../utils/LS'
+import { toast } from 'react-toastify'
+import { signOut } from '../actions/authActions.js'
+
+
 
 
 const MainLayout = () => {
 
     const [bar, setBar] = useState(false)
 const {user} = useSelector(store => store.authReducer)
+
+
     return (
         <div className=' w-full  min-h-screen bg-[url(/cordobaArgentina.jpg)] bg-cover overflow-x-hidden flex flex-col align-middle'>
 
@@ -43,6 +50,8 @@ const {user} = useSelector(store => store.authReducer)
                             
                        {
                         !user?.email &&
+                     
+                    
 <Link to="/auth/in">
                         <button  className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-2 border border-gray-500 rounded flex  justify-center items-center gap-1">
                             <p className=' text-sm m-0'>👤</p>
@@ -51,17 +60,20 @@ const {user} = useSelector(store => store.authReducer)
                         </button>
                         </Link>
                        }
+                       
+
 
 
 {
     user?.photo &&
     <a href="/">
-    <button  className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-2 border border-gray-500 rounded flex  justify-center items-center gap-1">
+    <button onClick={signOut}  className="bg-blue-400 hover:bg-blue-500 text-white font-bold py-1 px-2 border border-gray-500 rounded flex  justify-center items-center gap-1">
                            <img src={user.photo} alt="picture" className='w-8 h-8 rounded-full  border-sky-500 border-2' />
 
                             <p className='hidden sm:flex'>Logout</p>
                         </button>
                         </a>
+                        
  
 }
 
